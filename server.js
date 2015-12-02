@@ -9,7 +9,6 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var classify= require('./classify.js')
 var functions= require('./functions.js')
-var addMember= require('./addMember.js')
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST

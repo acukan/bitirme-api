@@ -3,8 +3,11 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.0.1",
+    "date.js": "^0.2.1",
     "express": "~4.0.0",
     "forecast": "^0.2.1",
-    "mongoose": "~3.6.13"
+    "mongoose": "~3.6.13",
+    "natural": "^0.2.1",
+    "simple-weather": "^1.2.2"
   }
 }
