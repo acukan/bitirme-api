@@ -56,3 +56,23 @@ router.route('/')
           });
         });
       });
+      router.route('/gettest/:query')
+
+
+
+
+      .get(function(req, res) {
+
+
+            query = req.params.query;
+
+
+              classify.classify(query, function ( err, classifyed ){
+                functions.functions(query,classifyed, function ( err, functionsReturn ){
+                  res.json({
+                    action: classifyed,
+                    functions:functionsReturn
+                  });
+                });
+              });
+});
