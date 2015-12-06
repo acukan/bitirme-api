@@ -2,6 +2,9 @@ var natural = require('natural'),
 
 classifier = new natural.BayesClassifier();
 
+classifier.addDocument('my arm broked', 'search');
+classifier.addDocument('i have broken arm what can i do?', 'search');
+classifier.addDocument('aaaaaaaah', 'search');
 classifier.addDocument('wake me up qqqq', 'alarm');
 classifier.addDocument('set alarm q\'s', 'alarm');
 classifier.addDocument('qqqq call', 'call');

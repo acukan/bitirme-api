@@ -1,4 +1,5 @@
 
+var search= require('./tfidf.js')
 
 var date= require('date.js')
 function functions(query,classifyed,callback) {
@@ -12,9 +13,13 @@ function functions(query,classifyed,callback) {
     }
     else if (classifyed=="weather") {
       weather(function ( err, temperature ){
-      return callback(null ,temperature )
-})
-
+      return callback(null ,temperature)
+      })
+    }
+    else if(classifyed=="search"){
+      test=search.search(query)
+      console.log(test);
+      return callback(null , test)
     }
 }
 

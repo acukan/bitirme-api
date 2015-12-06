@@ -40,25 +40,7 @@ app.listen(port);
 console.log('Magic happens on port ' + port);
 
 router.route('/')
-
-    .post(function(req, res) {
-
-
-      query = req.body.query;
-
-
-        classify.classify(query, function ( err, classifyed ){
-          functions.functions(query,classifyed, function ( err, functionsReturn ){
-            res.json({
-              action: classifyed,
-              functions:functionsReturn
-            });
-          });
-        });
-      });
-      router.route('/gettest/:query')
-
-
+router.route('/gettest/:query')
 
 
       .get(function(req, res) {
@@ -76,3 +58,4 @@ router.route('/')
                 });
               });
 });
+router.route('/gettest/:query')
