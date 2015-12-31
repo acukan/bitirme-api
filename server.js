@@ -53,6 +53,7 @@ router.route('/gettest/:query')
                 functions.functions(query,classifyed, function ( err, functionsReturn ){
                   res.json({
                     action: classifyed,
+                    step:step,
                     functions:functionsReturn
                   });
                 });

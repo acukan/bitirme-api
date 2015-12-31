@@ -3,23 +3,27 @@ var search= require('./tfidf.js')
 
 var date= require('date.js')
 function functions(query,classifyed,callback) {
-  if(classifyed=="alarm")
-    return callback(null ,(date(query)))
-
+  if(classifyed=="alarm"){
+    step=0;
+    return callback(null ,(date(query)),step)
+    }
   else if(classifyed=="call"){
 
-    data=(query.replace('call', '') );
-    return callback(null , data)
+    data=(query.replace('query=call ', '') );
+    step=0;
+    return callback(null , data,step)
     }
     else if (classifyed=="weather") {
       weather(function ( err, temperature ){
-      return callback(null ,temperature)
+      step=0;
+      return callback(null ,temperature,step)
       })
     }
     else if(classifyed=="search"){
       test=search.search(query)
       console.log(test);
-      return callback(null , test)
+      step=0;
+      return callback(null , test,step)
     }
 }
 
