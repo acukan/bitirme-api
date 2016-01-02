@@ -40,20 +40,21 @@ app.listen(port);
 console.log('Magic happens on port ' + port);
 
 router.route('/')
-router.route('/gettest/:query')
+router.route('/gettest')
 
 
       .get(function(req, res) {
 
 
-            query = req.params.query;
-
-
+            query =(req.param('query').replace('query=', ''));
+            step=req.param('step');
+            sstep=0
               classify.classify(query, function ( err, classifyed ){
-                functions.functions(query,classifyed, function ( err, functionsReturn ){
+                functions.functions(query,step,sstep,classifyed, function ( err, functionsReturn,sstep ){
                   res.json({
                     action: classifyed,
-                    step:step,
+                    step:sstep,
+                    query:query,
                     functions:functionsReturn
                   });
                 });

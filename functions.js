@@ -2,28 +2,43 @@
 var search= require('./tfidf.js')
 
 var date= require('date.js')
-function functions(query,classifyed,callback) {
+function functions(query,step,sstep,classifyed,callback) {
   if(classifyed=="alarm"){
-    step=0;
-    return callback(null ,(date(query)),step)
+    return callback(null ,(date(query)),sstep)
     }
   else if(classifyed=="call"){
 
-    data=(query.replace('query=call ', '') );
-    step=0;
-    return callback(null , data,step)
+    data=(query.replace('call ', '') );
+    return callback(null , data,sstep)
     }
     else if (classifyed=="weather") {
       weather(function ( err, temperature ){
-      step=0;
-      return callback(null ,temperature,step)
+      return callback(null ,temperature,sstep)
       })
+    }
+    else if (classifyed=="location") {
+      var n = query.split(" ");
+      return callback(null ,n[n.length - 1],sstep)
+
     }
     else if(classifyed=="search"){
       test=search.search(query)
-      console.log(test);
-      step=0;
-      return callback(null , test,step)
+      if(step==1){
+        sstep=0;
+        test=test[1];
+        return callback(null , test,sstep)
+      }
+      else if(Array.isArray(test)){
+        sstep=1;
+        console.log(test[0]);
+
+        test=null;
+
+        return callback(null , test,sstep)
+
+      }
+      else
+      return callback(null , test,sstep)
     }
 }
 
