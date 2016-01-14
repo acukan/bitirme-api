@@ -2,7 +2,7 @@
 var search= require('./tfidf.js')
 
 var date= require('date.js')
-function functions(query,step,sstep,classifyed,callback) {
+function functions(query,classifyed,callback) {
   if(classifyed=="alarm"){
     return callback(null ,(date(query)),sstep)
     }
@@ -23,22 +23,8 @@ function functions(query,step,sstep,classifyed,callback) {
     }
     else if(classifyed=="search"){
       test=search.search(query)
-      if(step==1){
-        sstep=0;
-        test=test[1];
-        return callback(null , test,sstep)
-      }
-      else if(Array.isArray(test)){
-        sstep=1;
-        console.log(test[0]);
 
-        test=null;
-
-        return callback(null , test,sstep)
-
-      }
-      else
-      return callback(null , test,sstep)
+      return callback(null , test)
     }
 }
 
