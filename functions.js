@@ -4,21 +4,21 @@ var search= require('./tfidf.js')
 var date= require('date.js')
 function functions(query,classifyed,callback) {
   if(classifyed=="alarm"){
-    return callback(null ,(date(query)),sstep)
+    return callback(null ,(date(query)))
     }
   else if(classifyed=="call"){
 
     data=(query.replace('call ', '') );
-    return callback(null , data,sstep)
+    return callback(null , data)
     }
     else if (classifyed=="weather") {
       weather(function ( err, temperature ){
-      return callback(null ,temperature,sstep)
+      return callback(null ,temperature)
       })
     }
     else if (classifyed=="location") {
       var n = query.split(" ");
-      return callback(null ,n[n.length - 1],sstep)
+      return callback(null ,n[n.length - 1])
 
     }
     else if(classifyed=="search"){

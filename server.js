@@ -60,13 +60,10 @@ router.route('/gettest')
         //get  fonksiyonunu kullanıcaz burda onu belirttik
 
             query =(req.param('query').replace('query=', '')); //query'i alıyoruz burda
-            step=req.param('step');// stepi buırda alıyoruz ama gerek yok kaldırılabilir dursun for future development
-            choice=req.param('choice');//seçeneği alackatık ama sen alıyorwsun artık
               classify.classify(query, function ( err, classifyed ){//artık classify ediyoruz bu diye
-                functions.functions(query,classifyed, function ( err, functionsReturn,sstep ){// ordan aldıgımız datayı functionsa yolluyoruz sayfasına bak
+                functions.functions(query,classifyed, function ( err, functionsReturn ){// ordan aldıgımız datayı functionsa yolluyoruz sayfasına bak
                   res.json({//burda da karşıya cevap veriyoruz
                     action: classifyed,
-                    step:sstep,
                     query:query,
                     functions:functionsReturn
                   });
